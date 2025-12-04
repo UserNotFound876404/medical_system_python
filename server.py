@@ -11,7 +11,7 @@ PORT: Final[str] = os.getenv('PORT')
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/home')
 def home():
     return "home", 200
 
@@ -58,4 +58,5 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
+
 
