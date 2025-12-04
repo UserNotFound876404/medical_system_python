@@ -5,6 +5,7 @@ easyocr
 python-dotenv
 numpy
 opencv-python-headless
-Pillow
+pillow
+
 
 
