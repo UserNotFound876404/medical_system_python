@@ -1,10 +1,8 @@
 flask
 gunicorn
 openai
-easyocr
+pytesseract
 python-dotenv
 numpy
 opencv-python-headless
 Pillow
-torch==2.0.1+cpu 
-torchvision==0.15.2+cpu
