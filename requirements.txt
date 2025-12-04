@@ -3,4 +3,6 @@ gunicorn
 openai
 python-dotenv
 numpy
-easyocr
+pytesseract
+opencv-python-headless
+pillow
