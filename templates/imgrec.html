@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Text Recognition</title>
+</head>
+<body>
+    <h1>Upload an image to extract text</h1>
+    
+    {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+    {% endif %}
+    
+    {% if success %}
+        <h2>✅ Extracted Text</h2>
+        <p><strong>{{ extracted_text }}</strong></p>
+        <p>Words found: {{ words_count }}</p>
+    {% endif %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br><br>
+        <button type="submit">Extract Text</button>
+    </form>
+</body>
+</html>
