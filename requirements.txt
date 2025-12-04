@@ -1,8 +1,5 @@
 flask
 gunicorn
 openai
-easyocr
 python-dotenv
 numpy
-opencv-python-headless
-pillow
