@@ -5,11 +5,10 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import json
 
-# Load environment variables
 load_dotenv()
 AIAPI_TOKEN: Final[str] = os.getenv('AI_API')
 
-def get_chatbot_response(question: str) -> str:
+def get_chatbot_response(question: str):
     try:
         client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
@@ -24,7 +23,8 @@ def get_chatbot_response(question: str) -> str:
                 {
                     "role": "system",
                     "content": (
-                        "You are HealBot, a friendly AI health assistant. "
+                        "You are HealBot, a friendly AI health assistant."
+                        "INTRODUCE YOURSELF if users are greeting to you"
                         "Answer ONLY medical/health questions simply. "
                         "List main causes/symptoms/treatments when relevant. "
                         "If not medical, respond EXACTLY: 'Sorry, I can only answer health-related questions.'"
