@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from typing import Final
 import chatbot
-import imgrec 
+
 
 load_dotenv()
 PORT: Final[str] = os.getenv('PORT')
@@ -59,3 +59,4 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
+
