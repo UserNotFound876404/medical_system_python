@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from typing import Final
 import chatbot
-
+import imgrec 
 
 load_dotenv()
 PORT: Final[str] = os.getenv('PORT')
@@ -31,7 +31,7 @@ def ask():
 
 #text reconizer
 @app.route('/imgrec', methods=['GET', 'POST'])
-def imgrec_route():  
+def imgrec_route():  # Your existing route ✅
     if request.method == 'POST':
         # Check if file uploaded
         if 'image' not in request.files:
@@ -45,12 +45,12 @@ def imgrec_route():
         if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
             return render_template('imgrec.html', error='Invalid image format (JPG/PNG)')
         
-        #  Call  imgrec.py function
+        # ✅ Call your imgrec.py function
         result = imgrec.process_image(file.read())
         return render_template('imgrec.html', **result)
     
     # GET - show form
-    return render_template('imgrec.html') 
+    return render_template('imgrec.html')  # ✅ Clean - no variables!
     
 
 @app.route('/health')
@@ -59,4 +59,3 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
-
