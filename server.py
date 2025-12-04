@@ -26,7 +26,7 @@ def ask():
 
     # Spawn chatbot.py with input_json argument
     process = subprocess.Popen(
-        ['py', 'chatbot.py', input_json],
+        ['python3', 'chatbot.py', input_json],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -62,3 +62,4 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
+
