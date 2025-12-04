@@ -1,10 +1,12 @@
+# imgrec.py - Azure-safe version
 import cv2
-import easyocr
 import numpy as np
-import json
+import base64
+import io
+from PIL import Image
+import pytesseract
 
 def process_image(file_content: bytes) -> dict:
-    """Process uploaded image bytes and return extracted text"""
     try:
         # Read image with OpenCV
         nparr = np.frombuffer(file_content, np.uint8)
@@ -13,20 +15,21 @@ def process_image(file_content: bytes) -> dict:
         if img is None:
             return {'success': False, 'error': 'Invalid image file'}
         
-        # OCR with easyocr
-        reader = easyocr.Reader(['en'], gpu=False)
-        text_results = reader.readtext(img)
+        # Convert to PIL Image for Tesseract
+        img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
         
-        # Sort text by position (top-left to bottom-right)
-        sorted_text = sorted(text_results, key=lambda x: (x[0][0][1], x[0][0][0]))
-        extracted_texts = [item[1] for item in sorted_text]
-        full_text = ' '.join(extracted_texts)
+        # OCR with pytesseract (lightweight)
+        extracted_text = pytesseract.image_to_string(img_pil)
+        
+        words = extracted_text.split()
+        words_count = len(words)
         
         return {
             'success': True,
-            'extracted_text': full_text,
-            'words_count': len(extracted_texts),
-            'raw_results': text_results
+            'extracted_text': extracted_text.strip(),
+            'words_count': words_count,
+            'image_size': f"{img.shape[1]}x{img.shape[0]}"
         }
+        
     except Exception as e:
-        return {'success': False, 'error': f'OCR processing failed: {str(e)}'}
+        return {'success': False, 'error': str(e)}
