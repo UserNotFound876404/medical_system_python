@@ -4,3 +4,4 @@ openai
 easyocr
 python-dotenv
 numpy
+cv2
