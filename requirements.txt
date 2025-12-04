@@ -3,4 +3,3 @@ gunicorn
 openai
 python-dotenv
 numpy
-Pillow
