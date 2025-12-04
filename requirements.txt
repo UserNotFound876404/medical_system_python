@@ -1,9 +1,10 @@
-flask==2.2.5
+flask
 gunicorn
 openai
-pytesseract
+easyocr
 python-dotenv
 numpy
 opencv-python-headless
 Pillow
+
 
