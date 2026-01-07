@@ -13,23 +13,25 @@ PORT: Final[str] = os.getenv('PORT')
 app = Flask(__name__)
 
 
-@app.route('/home')
+@app.route('/')
 def home():
     return "home", 200
 
-@app.route('/ask')
+@app.route('/ask',methods=['POST'])
 def ask():
-    question = request.args.get('q')
-    if not question:
-        return jsonify({'error': 'Missing ?q=question parameter'}), 400
+    data = request.get_json()
+    if not data or not data.get('q'):
+        return jsonify({'error': 'Missing question variable'}), 400
 
-    print(f"Calling chatbot with: {question}")
+    question = data['q']
+    print(f"Calling chatbot with: {data}")
 
     response = chatbot.get_chatbot_response(question)
     print(f"Chatbot response: {response}")
     
     return jsonify(response)
 
+#curl -X POST http://localhost:8099/ask -H "Content-Type: application/json" -d "{\"q\": \"Hello chatbot\"}"
 #text reconizer
 '''
 @app.route('/imgrec', methods=['GET', 'POST'])
