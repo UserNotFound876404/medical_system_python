@@ -4,5 +4,3 @@ openai
 python-dotenv
 numpy
 pillow
-pytesseract
-opencv-python
