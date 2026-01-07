@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from typing import Final
 import chatbot
-import imgrec 
+# import imgrec 
 
 load_dotenv()
 PORT: Final[str] = os.getenv('PORT')
