@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from typing import Final
 import chatbot
-import imgrec
+import imgrec 
 
 load_dotenv()
 PORT: Final[str] = os.getenv('PORT')
@@ -31,8 +31,9 @@ def ask():
     return jsonify(response)
 
 #text reconizer
+'''
 @app.route('/imgrec', methods=['GET', 'POST'])
-def imgrec_route():  # Your existing route ✅
+def imgrec_route():  
     if request.method == 'POST':
         # Check if file uploaded
         if 'image' not in request.files:
@@ -52,16 +53,9 @@ def imgrec_route():  # Your existing route ✅
     
     # GET - show form
     return render_template('imgrec.html')  # ✅ Clean - no variables!
+'''
     
 
-@app.route('/health')
-def health():
-    return jsonify({'status': 'OK', 'port': PORT})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT)
-
-
-
-
-
