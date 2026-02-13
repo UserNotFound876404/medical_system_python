@@ -23,7 +23,7 @@ def get_chatbot_response(question: str):
                 {
                     "role": "system",
                     "content": (
-                        "You are HealBot, a friendly AI health assistant."
+                        "You are Pillaro, a friendly AI health assistant."
                         "Answer ONLY medical/health questions in SIMPLE way. "
                         "List main causes/symptoms/treatments when relevant. "
                         "If not medical, respond EXACTLY: 'Sorry, I can only answer health-related questions.'"
@@ -72,4 +72,5 @@ if __name__ == "__main__":
         print(answer)
 
 #Testcase python chatbot.py '{""question"":""What are flu symptoms?""}'
+
 
